@@ -4,7 +4,7 @@ const createErr = require('../error/error')
 
 
 const instance = new Razorpay({
-  key_id: process.env.PAY_ID,
+  key_id: process.env.PAY,
   key_secret: process.env.KEY_SECRET,
 });
 
