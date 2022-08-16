@@ -48,6 +48,10 @@ app.use((err, req, res, next) => {
   res.status(400).json({ success: false, msg: err.message });
 });
 
+app.get('/' , (req,res)=>{
+  res.send('<h4>Welcome to fakestore-server</h4>')
+})
+
 app.use((req,res) => {
   res.send(`<h4>page not found</h4>`)
 })
@@ -56,9 +60,7 @@ const port = process.env.PORT || 5000;
 //function for database connection
 const connectDb = require("./db/connect");
 
-app.get('/' , (req,res)=>{
-  res.send('<h4>fakestore-server</h4>')
-})
+k
 
 //function to start the server
 const start = async () => {
