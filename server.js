@@ -57,7 +57,6 @@ const port = process.env.PORT || 5000;
 //function for database connection
 const connectDb = require("./db/connect");
 
-k
 
 //function to start the server
 const start = async () => {
