@@ -56,6 +56,9 @@ const port = process.env.PORT || 5000;
 //function for database connection
 const connectDb = require("./db/connect");
 
+app.get('/' , (req,res)=>{
+  res.send('<h4>fakestore-server</h4>')
+})
 
 //function to start the server
 const start = async () => {
