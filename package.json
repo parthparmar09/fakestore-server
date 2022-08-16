@@ -1,11 +1,14 @@
 {
   "name": "contacts",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "backend for MERN stack e-commerce app",
+  "main": "server.js",
+  "engines": {
+    "node": "16.13.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
