@@ -39,7 +39,7 @@ const orderRoute = require("./routes/order");
 const authorization = require("./middleware/authorization");
 //setting routes
 app.use("/user", userRoute);
-app.use("/product", authorization, productRoute);
+app.use("/product",productRoute);
 app.use("/cart", authorization, cartRoute);
 app.use("/order" , authorization , orderRoute)
 
@@ -49,18 +49,17 @@ app.use((err, req, res, next) => {
 });
 
 app.get('/' , (req,res)=>{
-  res.send('<h4>Welcome to fakestore-server</h4>')
+  res.send('<h1>Fakestore-server</h1><h3><a href="https://documenter.getpostman.com/view/19497049/VUqmuySE">click here</a> to read documentation<h3>')
 })
 
 app.use((req,res) => {
   res.send(`<h4>page not found</h4>`)
 })
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000; 
 
 //function for database connection
 const connectDb = require("./db/connect");
 
-k
 
 //function to start the server
 const start = async () => {
