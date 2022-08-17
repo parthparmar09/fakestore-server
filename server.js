@@ -3,7 +3,7 @@ const express = require("express");
 //starting express app
 const app = express();
 app.get('/' , (req,res) => {
-  res.send('<h1>Fakestore-server</h1><h3><a href="https://documenter.getpostman.com/view/19497049/VUqmuySE">click here</a> to read docs</h3>')
+  res.send('<h1>Fakestore-server</h1><h3><a href="https://documenter.getpostman.com/view/19497049/VUqmuz3V">click here</a> to read docs</h3>')
 })
 
 //for security
