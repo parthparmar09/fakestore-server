@@ -144,4 +144,20 @@ const changePass = async (req, res, next) => {
     return next(createErr(StatusCodes.INTERNAL_SERVER_ERROR, error.message));
   }
 };
-module.exports = { getOtp, registerUser, loginUser, changePass };
+
+
+const getUser = async (req,res,next) =>{
+  try {
+    const user = await User.findOne({_id : req.user.id}).select('name email')
+    if(!user){
+      return next(createErr(StatusCodes.NOT_FOUND, 'user not found'));
+    }
+    res
+          .status(StatusCodes.OK)
+          .json({ success: true, user });
+  } catch (error) {
+    return next(createErr(StatusCodes.INTERNAL_SERVER_ERROR, error.message));
+    
+  }
+}
+module.exports = { getOtp, registerUser, loginUser, changePass ,getUser };

@@ -1,11 +1,12 @@
 const router = require('express').Router();
-const {placeOrder ,confirmOrder, cancelOrder} = require('../controllers/order')
+const {placeOrder ,confirmOrder, cancelOrder ,getOrders , getOrder} = require('../controllers/order')
 const {startOrder , verifyOrder} = require('../controllers/payments')
 
 
-router.route('/').post(startOrder ,placeOrder)
+router.route('/').post(startOrder ,placeOrder).get(getOrders)
 router.route('/confirm').post(verifyOrder , confirmOrder)
-router.route('/:id').delete(cancelOrder)
+router.route('/:id').delete(cancelOrder).get(getOrder)
+
 
 
 

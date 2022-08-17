@@ -52,4 +52,36 @@ const cancelOrder = async (req, res, next) => {
   }
 };
 
-module.exports = { placeOrder, confirmOrder, cancelOrder };
+const getOrders = async (req,res,next) => {
+  try {
+    const orders = await Order.find({customer_id : req.user.id})
+    if(!orders){
+    return next(createErr(StatusCodes.NOT_FOUND, 'no orders found'));
+
+    }
+    res.status(StatusCodes.OK).json({success : true , orders})
+
+  } catch (error) {
+    console.log(error);
+
+    return next(createErr(500, error.message));
+    
+  }
+}
+
+const getOrder = async (req,res,next) => {
+  try {
+    const order = await Order.find({customer_id : req.user.id , order_id : req.params.id})
+    if(!order){
+    return next(createErr(StatusCodes.NOT_FOUND, 'no orders found'));
+    }
+    res.status(StatusCodes.OK).json({success : true , order})
+  } catch (error) {
+    console.log(error);
+
+    return next(createErr(500, error.message));
+    
+  }
+} 
+
+module.exports = { placeOrder, confirmOrder, cancelOrder ,getOrders , getOrder };
