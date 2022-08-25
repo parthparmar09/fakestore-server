@@ -79,7 +79,7 @@ const getOrder = async (req,res,next) => {
 
 const cancelOrder = async (req, res, next) => {
   try {
-    const order = await Order.findOneAndUpdate({customer_id : req.user.id , order_id : req.params.id} , {status : 'cancel'})
+    const order = await Order.findOneAndUpdate({customer_id : req.user.id , order_id : req.params.id} , {status : 'cancelled'})
     res.status(StatusCodes.OK).json({success : true , msg :'order cancelled'})
   } catch (error) {
     console.log(error);
