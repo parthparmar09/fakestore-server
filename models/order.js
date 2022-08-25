@@ -64,8 +64,12 @@ const OrderSchema = new mongoose.Schema({
             required : [true , `state can't be empty`]
 
         }
+    },
+    status : {
+        type : String,
+        enum : ['pending' , 'completed' , 'cancelled'],
+        default : 'pending'
     }
-    
 
 })
 

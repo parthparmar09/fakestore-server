@@ -43,14 +43,7 @@ const confirmOrder = async (req, res, next) => {
     return next(createErr(500, error.message));
   }
 };
-const cancelOrder = async (req, res, next) => {
-  try {
-    res.send("deleting");
-  } catch (error) {
-    console.log(error);
-    return next(createErr(500, error.message));
-  }
-};
+
 
 const getOrders = async (req,res,next) => {
   try {
@@ -84,4 +77,23 @@ const getOrder = async (req,res,next) => {
   }
 } 
 
-module.exports = { placeOrder, confirmOrder, cancelOrder ,getOrders , getOrder };
+const cancelOrder = async (req, res, next) => {
+  try {
+    const order = await Order.findOneAndUpdate({customer_id : req.user.id , order_id : req.params.id} , {status : 'cancel'})
+    res.status(StatusCodes.OK).json({success : true , msg :'order cancelled'})
+  } catch (error) {
+    console.log(error);
+    return next(createErr(500, error.message));
+  }
+};
+const completeOrder = async (req, res, next) => {
+  try {
+    const order = await Order.findOneAndUpdate({ order_id : req.params.id} , {status : 'completed'})
+    res.status(StatusCodes.OK).json({success : true , msg :'order completed'})
+  } catch (error) {
+    console.log(error);
+    return next(createErr(500, error.message));
+  }
+};
+
+module.exports = { placeOrder, confirmOrder, cancelOrder ,getOrders , getOrder ,completeOrder};
